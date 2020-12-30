@@ -5,6 +5,7 @@ tap "homebrew/core"
 tap "homebrew/services"
 
 brew "gnupg"
+brew "pinentry-mac"
 cask "1password"
 cask "1password-cli"
 cask "visual-studio-code"
