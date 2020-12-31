@@ -7,7 +7,7 @@ DOTFILESDIR=$(pwd -P)
 VSCODE="$HOME/Library/Application Support/Code/User"
 
 for DOTFILE in *; do
-  HOMEFILE="$HOME/.$DOTFILE"
+  HOMEFILE="$HOME/$DOTFILE"
   [ -d $DOTFILE ] && DOTFILE="$DOTFILE/"
   DIRFILE="$DOTFILESDIR/$DOTFILE"
 
