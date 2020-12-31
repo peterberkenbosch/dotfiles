@@ -1,0 +1,28 @@
+# ~/dip.yml
+version: "5.0"
+
+compose:
+  files:
+    - ./.dip/global-compose.yml
+  project_name: shared_dip_env
+
+interaction:
+  ruby: &ruby
+    description: Open Ruby service terminal
+    service: ruby
+    command: /bin/bash
+  "ruby:latest":
+    <<: *ruby
+    service: ruby-latest
+  psql:
+    description: Run psql console
+    service: postgres
+    command: psql -h postgres -U postgres
+  createdb:
+    description: Run PostgreSQL createdb command
+    service: postgres
+    command: createdb -h postgres -U postgres
+  "redis-cli":
+    description: Run Redis console
+    service: redis
+    command: redis-cli -h redis

@@ -1,0 +1,75 @@
+# ~/.dip/global-compose.yml
+version: "2.4"
+
+services:
+  # Current stable Ruby
+  ruby: &ruby
+    command: bash
+    image: ruby:2.7
+    volumes:
+      # That's all the magic!
+      - ${PWD}:/${PWD}:cached
+      - bundler_data:/usr/local/bundle
+      - history:/usr/local/hist
+      # I also mount different configuration files
+      # for better DX
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432
+      REDIS_URL: redis://redis:6379/
+      HISTFILE: /usr/local/hist/.bash_history
+      LANG: C.UTF-8
+      PROMPT_DIRTRIM: 2
+      PS1: '[\W]\! '
+      # Plays nice with gemfiles/*.gemfile files for CI
+      BUNDLE_GEMFILE: ${BUNDLE_GEMFILE:-Gemfile}
+    # And that's the second part of the spell
+    working_dir: ${PWD}
+    tmpfs:
+      - /tmp
+  # Edge Ruby
+  ruby-latest:
+    <<: *ruby
+    image: rubocophq/ruby-snapshot:latest
+    volumes:
+      - ${PWD}:/${PWD}:cached
+      - bundler_data_edge:/usr/local/bundle
+      - history:/usr/local/hist
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+  # Current flavor of PostgreSQL
+  postgres:
+    image: postgres:11.7
+    volumes:
+      - history:/usr/local/hist
+      - ./.psqlrc:/root/.psqlrc:ro
+      - postgres:/var/lib/postgresql/data
+    environment:
+      PSQL_HISTFILE: /usr/local/hist/.psql_history
+      POSTGRES_PASSWORD: postgres
+      PGPASSWORD: postgres
+    ports:
+      - 5432
+  # Current flavor or Redis
+  redis:
+    image: redis:5-alpine
+    volumes:
+      - redis:/data
+    ports:
+      - 6379
+    healthcheck:
+      test: redis-cli ping
+      interval: 1s
+      timeout: 3s
+      retries: 30
+
+# Volumes to avoid rebuilding dependencies every time you run your projects!
+volumes:
+  postgres:
+  redis:
+  bundler_data:
+  bundler_data_edge:
+  history:
