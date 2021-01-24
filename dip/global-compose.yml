@@ -53,6 +53,19 @@ services:
       PGPASSWORD: postgres
     ports:
       - 5432
+  # MariaDB
+  mariadb:
+    image: mariadb:10
+    restart: always
+    volumes:
+      - mariadb:/var/lib/mysql/data
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+    ports:
+      - 3306
+    healthcheck:
+      test: mysqladmin status -h mariadb -pmysql
+      interval: 5s
   # Current flavor or Redis
   redis:
     image: redis:5-alpine
@@ -69,6 +82,7 @@ services:
 # Volumes to avoid rebuilding dependencies every time you run your projects!
 volumes:
   postgres:
+  mariadb:
   redis:
   bundler_data:
   bundler_data_edge:
