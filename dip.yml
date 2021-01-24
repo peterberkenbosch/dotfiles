@@ -26,3 +26,7 @@ interaction:
     description: Run Redis console
     service: redis
     command: redis-cli -h redis
+  mysql:
+    description: 'Run mysql console'
+    service: mariadb
+    command: mysql -h mariadb -pmysql
