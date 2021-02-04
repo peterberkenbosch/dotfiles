@@ -2,3 +2,10 @@ Host *
  AddKeysToAgent yes
  UseKeychain yes
  IdentityFile ~/.ssh/id_rsa
+Host qbox-staging
+  HostName legacy-staging-us-east-1.kuberpedia.com
+  User randysavage
+  IdentityFile ~/.ssh/devops-key-us-east-1-dev.pem
+  ServerAliveInterval 10
+  ForwardAgent yes
+  StrictHostKeyChecking no
