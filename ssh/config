@@ -9,3 +9,7 @@ Host qbox-staging
   ServerAliveInterval 10
   ForwardAgent yes
   StrictHostKeyChecking no
+
+Host macmini
+ HostName 192.168.99.10
+ ForwardAgent yes
