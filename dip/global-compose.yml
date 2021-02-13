@@ -29,6 +29,34 @@ services:
     working_dir: ${PWD}
     tmpfs:
       - /tmp
+  
+  ruby3: &ruby
+    command: bash 
+    image: ruby:3.0
+    volumes:
+      # That's all the magic!
+      - ${PWD}:/${PWD}:cached
+      - bundler_data:/usr/local/bundle
+      - history:/usr/local/hist
+      # I also mount different configuration files
+      # for better DX
+      - ./.bashrc:/root/.bashrc:ro
+      - ./.irbrc:/root/.irbrc:ro
+      - ./.pryrc:/root/.pryrc:ro
+    environment:
+      DATABASE_URL: postgres://postgres:postgres@postgres:5432
+      REDIS_URL: redis://redis:6379/
+      HISTFILE: /usr/local/hist/.bash_history
+      LANG: C.UTF-8
+      PROMPT_DIRTRIM: 2
+      PS1: '[\W]\! '
+      # Plays nice with gemfiles/*.gemfile files for CI
+      BUNDLE_GEMFILE: ${BUNDLE_GEMFILE:-Gemfile}
+    # And that's the second part of the spell
+    working_dir: ${PWD}
+    tmpfs:
+      - /tmp
+  
   # Edge Ruby
   ruby-latest:
     <<: *ruby
