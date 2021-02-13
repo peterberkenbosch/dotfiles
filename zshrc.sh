@@ -20,4 +20,6 @@ setopt hist_reduce_blanks
 setopt share_history
 
 # Don't hang up background jobs
-setopt no_hup
+setopt no_hup 
+
+. $(brew --prefix asdf)/asdf.sh
