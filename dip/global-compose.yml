@@ -5,33 +5,6 @@ services:
   # Current stable Ruby
   ruby: &ruby
     command: bash
-    image: ruby:2.7
-    volumes:
-      # That's all the magic!
-      - ${PWD}:/${PWD}:cached
-      - bundler_data:/usr/local/bundle
-      - history:/usr/local/hist
-      # I also mount different configuration files
-      # for better DX
-      - ./.bashrc:/root/.bashrc:ro
-      - ./.irbrc:/root/.irbrc:ro
-      - ./.pryrc:/root/.pryrc:ro
-    environment:
-      DATABASE_URL: postgres://postgres:postgres@postgres:5432
-      REDIS_URL: redis://redis:6379/
-      HISTFILE: /usr/local/hist/.bash_history
-      LANG: C.UTF-8
-      PROMPT_DIRTRIM: 2
-      PS1: '[\W]\! '
-      # Plays nice with gemfiles/*.gemfile files for CI
-      BUNDLE_GEMFILE: ${BUNDLE_GEMFILE:-Gemfile}
-    # And that's the second part of the spell
-    working_dir: ${PWD}
-    tmpfs:
-      - /tmp
-  
-  ruby3: &ruby
-    command: bash 
     image: ruby:3.0
     volumes:
       # That's all the magic!
@@ -56,7 +29,7 @@ services:
     working_dir: ${PWD}
     tmpfs:
       - /tmp
-  
+
   # Edge Ruby
   ruby-latest:
     <<: *ruby
@@ -70,7 +43,7 @@ services:
       - ./.pryrc:/root/.pryrc:ro
   # Current flavor of PostgreSQL
   postgres:
-    image: postgres:11.7
+    image: postgres:13.2-alpine
     volumes:
       - history:/usr/local/hist
       - ./.psqlrc:/root/.psqlrc:ro
@@ -80,7 +53,7 @@ services:
       POSTGRES_PASSWORD: postgres
       PGPASSWORD: postgres
     ports:
-      - 5432
+      - 5432:5432
   # MariaDB
   mariadb:
     image: mariadb:10
@@ -90,17 +63,17 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: mysql
     ports:
-      - 3306
+      - 3306:3306
     healthcheck:
       test: mysqladmin status -h mariadb -pmysql
       interval: 5s
   # Current flavor or Redis
   redis:
-    image: redis:5-alpine
+    image: redis:6.0-alpine
     volumes:
       - redis:/data
     ports:
-      - 6379
+      - 6379:6379
     healthcheck:
       test: redis-cli ping
       interval: 1s
