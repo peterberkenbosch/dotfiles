@@ -3,7 +3,7 @@
 	name = Peter Berkenbosch
 	# Email used in commit messages.
 	email = info@peterberkenbosch.nl
-	signingkey = 55A092D37A75E0B0
+	signingkey = 0x26CA21CD9509247E
 [github]
 	# GitHub username for command-line tools.
 	user = peterberkenbosch
