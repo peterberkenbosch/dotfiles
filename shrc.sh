@@ -45,6 +45,7 @@ add_to_path_end "/sbin"
 add_to_path_end "$HOME/.dotfiles/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
+add_to_path_start "/opt/homebrew"
 
 # Aliases
 alias mkdir="mkdir -vp"
