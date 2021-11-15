@@ -14,7 +14,7 @@ brew "pinentry-mac"
 brew "ykman"
 brew "heroku/brew/heroku"
 brew "ruby@3"
-brew "node"
+brew "node@16"
 brew "yarn"
 brew "postgresql", restart_service: true
 brew "redis", restart_service: true
