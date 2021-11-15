@@ -1,18 +1,15 @@
-Host *
- AddKeysToAgent yes
- UseKeychain yes
- IdentityFile ~/.ssh/id_rsa
 Host github.com
   IdentitiesOnly yes
   IdentityFile ~/.ssh/id_rsa_yubikey.pub
-Host qbox-staging
-  HostName legacy-staging-us-east-1.kuberpedia.com
-  User randysavage
-  IdentityFile ~/.ssh/devops-key-us-east-1-dev.pem
-  ServerAliveInterval 10
-  ForwardAgent yes
-  StrictHostKeyChecking no
-
 Host macmini
  HostName 192.168.99.10
  ForwardAgent yes
+Host *
+	StrictHostKeyChecking ask
+	VerifyHostKeyDNS ask
+	NoHostAuthenticationForLocalhost yes
+	IdentityFile ~/.ssh/id_rsa
+	UseKeychain yes
+	AddKeysToAgent yes
+	ControlMaster auto
+	ControlPath /tmp/ssh-%r@%h:%p.socket
