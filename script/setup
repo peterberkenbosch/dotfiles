@@ -15,6 +15,7 @@ DOTFILESDIR=$(pwd -P)
 [ $(uname -s) = "Darwin" ] && export MACOS=1 && export UNIX=1
 [ $(uname -s) = "Linux" ] && export LINUX=1 && export UNIX=1
 uname -s | grep -q "_NT-" && export WINDOWS=1
+[ $(uname -m) = "arm64" ] && export M1=1
 
 if [ $MACOS ]
 then
@@ -50,19 +51,6 @@ for DOTFILE in *; do
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
 
-  # Fixup RuboCop configuration (if possible)
-  if echo $DOTFILE | grep -q 'rubocop-github.yml'
-  then
-    HOMEGITHUB="$HOME/GitHub"
-    [ -d $HOMEGITHUB ] || continue
-    HOMEFILE="$HOMEGITHUB/.rubocop.yml"
-  elif echo $DOTFILE | grep -q 'rubocop-oss.yml'
-  then
-    HOMEOSS="$HOME/OSS"
-    [ -d $HOMEOSS ] || continue
-    HOMEFILE="$HOMEOSS/.rubocop.yml"
-  fi
-
   if [ $UNIX ]
   then
     if [ -L "$HOMEFILE" ] && ! [ -d $DOTFILE ]
@@ -87,4 +75,10 @@ fi
 if [ -n "$CODESPACES" ]
 then
   chmod 700 /workspaces
+fi
+
+# Install Rosetta 2
+if [ $M1 ]
+then
+  softwareupdate --install-rosetta --agree-to-license
 fi
