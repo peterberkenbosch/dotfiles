@@ -5,6 +5,7 @@ tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "homebrew/services"
 
+brew "mas"
 brew "gh"
 brew "git-lfs"
 brew "tmux"
@@ -14,8 +15,10 @@ brew "ykman"
 brew "heroku/brew/heroku"
 brew "ruby@3"
 brew "node"
+brew "yarn"
 brew "postgresql", restart_service: true
-brew "redis"
+brew "redis", restart_service: true
+brew "imagemagick"
 cask "1password"
 cask "1password-cli"
 cask "alfred"
@@ -23,8 +26,15 @@ cask "deckset"
 cask "insomnia"
 cask "iterm2"
 cask "ngrok"
-cask "setapp"
-cask "slack"
 cask "visual-studio-code"
 cask "rectangle"
 cask "basecamp"
+cask "notion"
+cask "firefox"
+cask "brave-browser"
+cask "fmail"
+
+mas "Slack", id: 803453959
+mas "iA Writer", id: 775737590
+mas "Harvest", id: 506189836
+mas "Shush - Microphone Manager", id: 496437906
