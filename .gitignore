@@ -9,3 +9,4 @@ known_hosts
 gnupg/random_seed
 gnupg/reader_0.status
 gnupg/gpg-agent.conf
+gnupg/sshcontrol
