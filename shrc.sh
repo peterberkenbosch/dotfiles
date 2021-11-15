@@ -46,6 +46,7 @@ add_to_path_end "$HOME/.dotfiles/bin"
 add_to_path_start "/usr/local/bin"
 add_to_path_start "/usr/local/sbin"
 add_to_path_start "/opt/homebrew/bin"
+add_to_path_start "/opt/homebrew/opt/ruby/bin"
 
 # Aliases
 alias mkdir="mkdir -vp"
@@ -64,3 +65,10 @@ export GIT_EDITOR="vi"
 
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
+
+# For compilers to find ruby you may need to set:
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+
+#For pkg-config to find ruby you may need to set:
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
