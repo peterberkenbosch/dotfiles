@@ -68,13 +68,9 @@ export GIT_EDITOR="vi"
 # Look in ./bin but do it last to avoid weird `which` results.
 force_add_to_path_start "bin"
 
-# For compilers to find ruby:
-export LDFLAGS="-L/opt/homebrew/opt/ruby/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/ruby/include"
+# For compilers to find ruby and node:
+export LDFLAGS="-L/opt/homebrew/opt/ruby/lib -L/opt/homebrew/opt/node@16/lib"
+export CPPFLAGS="-I/opt/homebrew/opt/ruby/include -I/opt/homebrew/opt/node@16/include"
 
 #For pkg-config to find ruby you may need to set:
 export PKG_CONFIG_PATH="/opt/homebrew/opt/ruby/lib/pkgconfig"
-
-# For compilers to find node@16
-export LDFLAGS="-L/opt/homebrew/opt/node@16/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/node@16/include"
