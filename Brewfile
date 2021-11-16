@@ -33,6 +33,7 @@ cask "notion"
 cask "firefox"
 cask "brave-browser"
 cask "fmail"
+cask "figma"
 
 mas "Slack", id: 803453959
 mas "iA Writer", id: 775737590
