@@ -8,7 +8,7 @@ Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
 	NoHostAuthenticationForLocalhost yes
-	IdentityFile ~/.ssh/id_rsa
+	IdentityFile ~/.ssh/id_rsa_yubikey.pub
 	UseKeychain yes
 	AddKeysToAgent yes
 	ControlMaster auto
