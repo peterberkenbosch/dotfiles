@@ -20,9 +20,10 @@ setopt hist_reduce_blanks
 setopt share_history
 
 # Don't hang up background jobs
-setopt no_hup 
+setopt no_hup
 
 . $(brew --prefix asdf)/asdf.sh
 
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
