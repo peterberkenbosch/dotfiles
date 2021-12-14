@@ -1,6 +1,6 @@
 Host github.com
   IdentitiesOnly yes
-  IdentityFile ~/.ssh/id_rsa_yubikey.pub
+  IdentityFile ~/.ssh/id_rsa
 Host macmini
  HostName 192.168.99.10
  ForwardAgent yes
@@ -8,7 +8,7 @@ Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
 	NoHostAuthenticationForLocalhost yes
-	IdentityFile ~/.ssh/id_rsa_yubikey.pub
+	IdentityFile ~/.ssh/id_rsa
 	UseKeychain yes
 	AddKeysToAgent yes
 	ControlMaster auto
