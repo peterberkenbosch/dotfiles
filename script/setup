@@ -47,6 +47,11 @@ for DOTFILE in *; do
        HOMEFILE="$VSCODE/settings.json" &&
        mkdir -p "$VSCODE"
 
+  # Fixup VSCode keybinding path
+  echo $DOTFILE | grep -q 'vscode-keybindings' &&
+       HOMEFILE="$VSCODE/keybindings.json" &&
+       mkdir -p "$VSCODE"
+
   # Remove .sh extensions
   echo $DOTFILE | grep -q '\.sh' &&
        HOMEFILE="$HOME/.$(echo $DOTFILE | sed -e 's/\.sh//')"
