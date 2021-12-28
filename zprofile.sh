@@ -57,6 +57,8 @@ git_branch() {
   [ -n "$GIT_BRANCH" ] && echo "($GIT_BRANCH) "
 }
 
+NEWLINE=$'\n'
+
 if [ "$USER" = "root" ]
 then
   export PROMPT='%{$fg_bold[magenta]%}%m %{$fg_bold[blue]%}# %b%f'
@@ -64,9 +66,9 @@ elif [ -n "${SSH_CONNECTION}" ]
 then
   export PROMPT='%{$fg_bold[cyan]%}%m %{$fg_bold[blue]%}# %b%f'
 else
-  export PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}# %b%f'
+  export PROMPT='%{$fg_bold[green]%}%m %{$fg_bold[blue]%}%{$fg_bold[red]%}$(git_branch)%b[%{$fg_bold[blue]%}%~%b%f] ${NEWLINE}#> %b%f'
 fi
-export RPROMPT='%{$fg_bold[red]%}$(git_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
+# export RPROMPT='%{$fg_bold[red]%}$(git_branch)%b[%{$fg_bold[blue]%}%~%b%f]'
 
 # more macOS/Bash-like word jumps
 export WORDCHARS=""
