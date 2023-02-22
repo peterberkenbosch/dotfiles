@@ -21,8 +21,8 @@ setopt share_history
 
 # Don't hang up background jobs
 setopt no_hup
-
-. $(brew --prefix asdf)/asdf.sh
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+source "$(brew --prefix asdf)/libexec/asdf.sh"
 
 export GPG_TTY="$(tty)"
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
