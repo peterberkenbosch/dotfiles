@@ -23,7 +23,6 @@
   "workbench.sideBar.location": "right",
   "workbench.statusBar.visible": true,
   "workbench.editor.showTabs": false,
-  "editor.renderIndentGuides": false,
   "editor.minimap.enabled": false,
 
 
@@ -67,7 +66,8 @@
     "**/node_modules": true,
     "**/dist": true,
     "**/package-lock.json": true,
-    "storage": true
+    "storage": true,
+    "**/tmp": true
   },
 
   /**
@@ -95,4 +95,7 @@
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.detectIndentation": false,
+  "editor.fontSize": 12,
+  "editor.lineHeight": 0,
+  "editor.guides.indentation": false,
 }
