@@ -82,8 +82,8 @@ then
   chmod 700 /workspaces
 fi
 
-# Install Rosetta 2
-if [ $M1 ]
-then
-  softwareupdate --install-rosetta --agree-to-license
-fi
+# # Install Rosetta 2
+# if [ $M1 ]
+# then
+#   softwareupdate --install-rosetta --agree-to-license
+# fi
