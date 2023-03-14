@@ -1,9 +1,12 @@
+Host 100.77.48.19
+  HostName 100.77.48.19
+
+Host peters-mac-mini
+  HostName peters-mac-mini
+
 Host github.com
   IdentitiesOnly yes
   IdentityFile ~/.ssh/id_rsa
-Host macmini
- HostName 192.168.99.10
- ForwardAgent yes
 Host *
 	StrictHostKeyChecking ask
 	VerifyHostKeyDNS ask
