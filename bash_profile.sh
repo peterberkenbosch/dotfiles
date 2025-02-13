@@ -61,3 +61,6 @@ then
   bind '"^u" history-search-backward'
   bind '"^v" history-search-forward'
 fi
+. "$HOME/.cargo/env"
+
+. "$HOME/.local/bin/env"

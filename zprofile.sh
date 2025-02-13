@@ -72,3 +72,6 @@ fi
 
 # more macOS/Bash-like word jumps
 export WORDCHARS=""
+
+# Added by OrbStack: command-line tools and integration
+source ~/.orbstack/shell/init.zsh 2>/dev/null || :
