@@ -35,6 +35,7 @@
   # Autocorrect mistyped commands.
 	autocorrect = 1
 [alias]
+  lg = log --graph --pretty=format:'%Cred%h%Creset - %Cgreen(%ci)%Creset %s %C(bold blue)<%an>%Creset %C(yellow)%d%Creset'  --abbrev-commit --date=iso
 [diff]
 	# Use the slower but better patience diff algorithm
 	algorithm = patience

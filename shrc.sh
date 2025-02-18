@@ -57,6 +57,9 @@ alias rake="noglob rake"
 alias be="noglob bundle exec"
 
 alias ll="ls -al"
+alias gco="git checkout"
+alias gb="git branch"
+alias wip="git add . && git commit -m \"WIP\" && git push"
 
 export GREP_OPTIONS="--color=auto"
 export CLICOLOR=1
